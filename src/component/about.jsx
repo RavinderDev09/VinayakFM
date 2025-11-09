@@ -28,13 +28,13 @@ const About = () => {
     }
   ];
 
-  const milestones = [
-    { year: "2010", event: "Company Founded" },
-    { year: "2013", event: "100+ Projects Completed" },
-    { year: "2016", event: "Pan-India Operations" },
-    { year: "2020", event: "500+ Happy Clients" },
-    { year: "2024", event: "Industry Leader" }
-  ];
+//   const milestones = [
+//     { year: "2010", event: "Company Founded" },
+//     { year: "2013", event: "100+ Projects Completed" },
+//     { year: "2016", event: "Pan-India Operations" },
+//     { year: "2020", event: "500+ Happy Clients" },
+//     { year: "2024", event: "Industry Leader" }
+//   ];
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -168,26 +168,7 @@ const About = () => {
               </div>
             </div>
 
-            {/* Timeline */}
-            <div className="timeline-section">
-              <h3 className="timeline-title">Our Journey</h3>
-              <div className="timeline">
-                {milestones.map((milestone, index) => (
-                  <div 
-                    key={index} 
-                    className={`timeline-item ${isVisible ? 'animate' : ''}`}
-                    style={{ animationDelay: `${index * 0.2}s` }}
-                  >
-                    <div className="timeline-marker"></div>
-                    <div className="timeline-content">
-                      <div className="timeline-year">{milestone.year}</div>
-                      <div className="timeline-event">{milestone.event}</div>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-
+            
             {/* CTA Section */}
             <div className="about-cta">
               <div className="cta-content">

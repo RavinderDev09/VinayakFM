@@ -33,7 +33,7 @@ const Footer = () => {
                   <path d="M3 17L12 22L21 17" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                 </svg>
               </div>
-              <h3>MyStudyTracker</h3>
+              <h3>Vinayak Facility management</h3>
             </div>
             <p className="footer-description">
               Your ultimate companion for academic success. Track your progress, manage your schedule, and achieve your study goals.

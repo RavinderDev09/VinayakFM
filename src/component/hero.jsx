@@ -1,132 +1,207 @@
-// components/Hero.js
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import './hero.css';
 
 const Hero = () => {
-  const [currentSlide, setCurrentSlide] = useState(0);
+  const [currentService, setCurrentService] = useState(0);
   
-  const slides = [
+  const services = [
     {
-      title: "VINAYAK FACILITY & MANAGEMENT SERVICES",
-      subtitle: "Your Trusted Partner in Comprehensive Business Solutions",
-      highlight: "One Stop for All Your Business Needs",
-      background: "linear-gradient(135deg, #667eea 0%, #764ba2 100%)",
-      image: "💼"
+      name: "Manpower Supply",
+      icon: "👥",
+      stats: "5000+ Workers",
+      color: "#667eea"
     },
     {
-      title: "Premium Manpower Solutions",
-      subtitle: "Skilled Workforce for Every Industry Requirement",
-      highlight: "5000+ Successful Placements",
-      background: "linear-gradient(135deg, #f093fb 0%, #f5576c 100%)",
-      image: "👥"
+      name: "Placement Services", 
+      icon: "🎯",
+      stats: "95% Success Rate",
+      color: "#f093fb"
     },
     {
-      title: "Complete Facility Management",
-      subtitle: "From Housekeeping to Real Estate - We Handle It All",
-      highlight: "24/7 Support Services",
-      background: "linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)",
-      image: "🏢"
+      name: "Housekeeping",
+      icon: "🏠", 
+      stats: "24/7 Support",
+      color: "#4facfe"
+    },
+    {
+      name: "Horticulture",
+      icon: "🌿",
+      stats: "100+ Projects", 
+      color: "#43e97b"
+    },
+    {
+      name: "Building Maintenance",
+      icon: "🔧",
+      stats: "50+ Buildings",
+      color: "#ff9a9e"
+    },
+    {
+      name: "Real Estate", 
+      icon: "🏘️",
+      stats: "₹50Cr+ Portfolio",
+      color: "#a8edea"
     }
   ];
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setCurrentSlide((prev) => (prev + 1) % slides.length);
-    }, 4000);
+      setCurrentService((prev) => (prev + 1) % services.length);
+    }, 3000);
     return () => clearInterval(interval);
-  }, [slides.length]);
+  }, [services.length]);
 
   return (
-    <section 
-      className="hero" 
-      style={{ background: slides[currentSlide].background }}
-    >
-      <div className="hero-particles" id="particles-js"></div>
-      <div className="hero-overlay"></div>
-      <div className="container">
-        <div className="hero-content">
-          <div className="hero-badge">
-            <span>🏆 Trusted Since 2010</span>
-          </div>
-          <h1 className="hero-title">
-            {slides[currentSlide].title}
-          </h1>
-          <p className="hero-subtitle">
-            {slides[currentSlide].subtitle}
-          </p>
-          <div className="hero-highlight">
-            <span>✨ {slides[currentSlide].highlight}</span>
-          </div>
-          <div className="hero-buttons">
-            <Link to="/services" className="btn btn-primary">
-              <span className="btn-icon">🚀</span>
-              Explore Services
-            </Link>
-            <Link to="/contact" className="btn btn-secondary">
-              <span className="btn-icon">📞</span>
-              Get Instant Quote
-            </Link>
-          </div>
-          <div className="hero-features">
-            <div className="feature-item">
-              <span className="feature-icon">✅</span>
-              <span>100% Reliable</span>
-            </div>
-            <div className="feature-item">
-              <span className="feature-icon">⚡</span>
-              <span>Quick Response</span>
-            </div>
-            <div className="feature-item">
-              <span className="feature-icon">💰</span>
-              <span>Best Price Guarantee</span>
-            </div>
-          </div>
-        </div>
-        
-        <div className="hero-visual">
-          <div className="floating-card manpower">
-            <span className="card-icon">👥</span>
-            <span>Manpower</span>
-          </div>
-          <div className="floating-card placement">
-            <span className="card-icon">🎯</span>
-            <span>Placement</span>
-          </div>
-          <div className="floating-card housekeeping">
-            <span className="card-icon">🏠</span>
-            <span>Housekeeping</span>
-          </div>
-          <div className="floating-card horticulture">
-            <span className="card-icon">🌿</span>
-            <span>Horticulture</span>
-          </div>
-          <div className="floating-card maintenance">
-            <span className="card-icon">🔧</span>
-            <span>Maintenance</span>
-          </div>
-          <div className="floating-card realestate">
-            <span className="card-icon">🏘️</span>
-            <span>Real Estate</span>
-          </div>
-        </div>
-
-        <div className="slide-indicators">
-          {slides.map((_, index) => (
-            <button
-              key={index}
-              className={`indicator ${index === currentSlide ? 'active' : ''}`}
-              onClick={() => setCurrentSlide(index)}
-            />
-          ))}
+    <section className="hero">
+      {/* Animated Background */}
+      <div className="hero-bg">
+        <div className="gradient-bg"></div>
+        <div className="floating-elements">
+          <div className="element el-1"></div>
+          <div className="element el-2"></div>
+          <div className="element el-3"></div>
+          <div className="element el-4"></div>
         </div>
       </div>
-      
-      <div className="scroll-indicator">
-        <div className="mouse">
-          <div className="wheel"></div>
+
+      <div className="container">
+        <div className="hero-grid">
+          {/* Left Content */}
+          <div className="hero-content">
+            <div className="content-wrapper">
+              {/* Badge */}
+              <div className="premium-badge">
+                <span className="badge-dot"></span>
+                <span>Industry Leader Since 2010</span>
+              </div>
+
+              {/* Main Heading */}
+              <h1 className="main-heading">
+                <span className="heading-line">Premium</span>
+                <span className="heading-line accent">Facility Solutions</span>
+                <span className="heading-line">For Your Business</span>
+              </h1>
+
+              {/* Description */}
+              <p className="hero-description">
+                Complete facility management and manpower solutions trusted by 
+                <strong> 500+ businesses</strong> across India. From staffing to real estate, 
+                we provide end-to-end services with unmatched reliability.
+              </p>
+
+              {/* Animated Service Showcase */}
+              <div className="service-showcase">
+                <div className="service-display">
+                  <div 
+                    className="service-icon-large"
+                    style={{ backgroundColor: services[currentService].color }}
+                  >
+                    {services[currentService].icon}
+                  </div>
+                  <div className="service-info">
+                    <h3>{services[currentService].name}</h3>
+                    <p>{services[currentService].stats}</p>
+                  </div>
+                </div>
+                <div className="service-dots">
+                  {services.map((_, index) => (
+                    <button
+                      key={index}
+                      className={`dot ${index === currentService ? 'active' : ''}`}
+                      onClick={() => setCurrentService(index)}
+                      style={{ '--dot-color': services[index].color }}
+                    />
+                  ))}
+                </div>
+              </div>
+
+              {/* CTA Buttons */}
+              <div className="cta-section">
+                <Link to="/services" className="cta-btn primary">
+                  <span className="btn-content">
+                    <span className="btn-icon">⚡</span>
+                    Explore Our Services
+                  </span>
+                  <div className="btn-shine"></div>
+                </Link>
+                <Link to="/contact" className="cta-btn secondary">
+                  <span className="btn-content">
+                    <span className="btn-icon">💬</span>
+                    Get Free Consultation
+                  </span>
+                </Link>
+              </div>
+
+              {/* Stats */}
+              <div className="stats-preview">
+                <div className="stat">
+                  <div className="stat-number">500+</div>
+                  <div className="stat-label">Happy Clients</div>
+                </div>
+                <div className="stat">
+                  <div className="stat-number">10+</div>
+                  <div className="stat-label">Years Experience</div>
+                </div>
+                <div className="stat">
+                  <div className="stat-number">24/7</div>
+                  <div className="stat-label">Support</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Right Visual */}
+          <div className="hero-visual">
+            <div className="visual-container">
+              {/* Main Service Card */}
+              <div className="main-service-card">
+                <div className="card-glow" style={{ background: services[currentService].color }}></div>
+                <div className="card-content">
+                  <div className="card-icon" style={{ color: services[currentService].color }}>
+                    {services[currentService].icon}
+                  </div>
+                  <h4>{services[currentService].name}</h4>
+                  <p>{services[currentService].stats}</p>
+                </div>
+              </div>
+
+              {/* Floating Service Items */}
+              <div className="floating-services">
+                {services.map((service, index) => (
+                  <div 
+                    key={index}
+                    className={`service-item ${index === currentService ? 'active' : ''}`}
+                    style={{ 
+                      '--service-color': service.color,
+                      '--delay': `${index * 0.5}s`
+                    }}
+                    onClick={() => setCurrentService(index)}
+                  >
+                    <div className="item-icon" style={{ background: service.color }}>
+                      {service.icon}
+                    </div>
+                    <span>{service.name}</span>
+                  </div>
+                ))}
+              </div>
+
+              {/* Decorative Elements */}
+              <div className="decorative-circles">
+                <div className="circle circle-1"></div>
+                <div className="circle circle-2"></div>
+                <div className="circle circle-3"></div>
+              </div>
+            </div>
+          </div>
         </div>
-        <span>Scroll Down</span>
+      </div>
+
+      {/* Scroll Indicator */}
+      <div className="modern-scroll-indicator">
+        <div className="scroll-line">
+          <div className="scroll-progress"></div>
+        </div>
+        <span>Scroll to explore</span>
       </div>
     </section>
   );
