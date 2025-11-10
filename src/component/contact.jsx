@@ -14,25 +14,25 @@ const Contact = () => {
   const sectionRef = useRef(null);
 
   useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true);
-        }
-      },
-      { threshold: 0.3 }
-    );
+  const node = sectionRef.current; // capture ref once
+  if (!node) return;
 
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current);
-    }
-
-    return () => {
-      if (sectionRef.current) {
-        observer.unobserve(sectionRef.current);
+  const observer = new IntersectionObserver(
+    ([entry]) => {
+      if (entry.isIntersecting) {
+        setIsVisible(true);
       }
-    };
-  }, []);
+    },
+    { threshold: 0.3 }
+  );
+
+  observer.observe(node);
+
+  // cleanup safely using the stored node reference
+  return () => {
+    observer.unobserve(node);
+  };
+}, []);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -111,10 +111,10 @@ const Contact = () => {
             <div className="social-links">
               <h4>Follow Us</h4>
               <div className="social-icons">
-                <a href="#" className="social-icon">📘</a>
-                <a href="#" className="social-icon">📷</a>
-                <a href="#" className="social-icon">🐦</a>
-                <a href="#" className="social-icon">💼</a>
+                <a href="https://example.com" className="social-icon">📘</a>
+                <a href="https://example.com" className="social-icon">📷</a>
+                <a href="https://example.com" className="social-icon">🐦</a>
+                <a href="https://example.com" className="social-icon">💼</a>
               </div>
             </div>
           </div>
