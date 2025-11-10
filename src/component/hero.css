@@ -199,7 +199,8 @@
 .hero-description {
   font-size: 1.2rem;
   line-height: 1.6;
-  color: var(--text-secondary);
+  /* color: var(--text-secondary); */
+  color: whitesmoke;
   margin-bottom: 2.5rem;
 }
 
@@ -243,7 +244,8 @@
 }
 
 .service-info p {
-  color: var(--text-muted);
+  /* color: var(--text-muted); */
+  color: white;
   font-size: 0.9rem;
 }
 
@@ -348,7 +350,8 @@
 
 .stat-label {
   font-size: 0.9rem;
-  color: var(--text-muted);
+  /* color: var(--text-muted); */
+  color: white  ;
   font-weight: 500;
 }
 
@@ -416,7 +419,8 @@
 }
 
 .main-service-card p {
-  color: var(--text-muted);
+  /* color: var(--text-muted); */
+  color: white  ;
   font-size: 0.9rem;
 }
 

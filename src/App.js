@@ -9,6 +9,7 @@ import Services from './component/services';
 import About from './component/about';  
 import LoadingSpinner from './component/loading';
 import Footer from './component/footer';
+import Contact from './component/contact';
 
 
 function App() {
@@ -33,10 +34,10 @@ function App() {
           <Route path="/" element={
             <>
               <Hero />
-             <About/>
+             {/* <About/> */}
               {/* <Stats /> */}
               <Services />
-              {/* {About} */}
+                 <Contact />
             </>
           } />
           <Route path="/services" element={<Services />} />

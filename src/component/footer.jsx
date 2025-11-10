@@ -116,7 +116,7 @@ const Footer = () => {
         </div>
 
         {/* Developer Section */}
-        <div className="developer-section">
+        {/* <div className="developer-section">
           <div className="developer-info">
             <div className="developer-avatar">
               <svg width="40" height="40" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -149,7 +149,7 @@ const Footer = () => {
               </div>
             </div>
           </div>
-        </div>
+        </div> */}
 
         {/* Footer Bottom */}
         <div className="footer-bottom">

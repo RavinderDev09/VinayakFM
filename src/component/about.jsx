@@ -1,46 +1,23 @@
+// components/About/About.js
 import React, { useState, useEffect, useRef } from 'react';
 import './about.css';
 
 const About = () => {
   const [isVisible, setIsVisible] = useState(false);
   const sectionRef = useRef(null);
-
-  const features = [
-    {
-      icon: "🏆",
-      title: "Industry Experience",
-      description: "Over 10 years of excellence in facility management services"
-    },
-    {
-      icon: "🔧",
-      title: "Comprehensive Solutions",
-      description: "End-to-end services from manpower to real estate management"
-    },
-    {
-      icon: "⭐",
-      title: "Quality Assurance",
-      description: "98% client satisfaction rate with proven track record"
-    },
-    {
-      icon: "🚀",
-      title: "Innovation Driven",
-      description: "Continuous improvement with latest technologies and practices"
-    }
-  ];
-
-//   const milestones = [
-//     { year: "2010", event: "Company Founded" },
-//     { year: "2013", event: "100+ Projects Completed" },
-//     { year: "2016", event: "Pan-India Operations" },
-//     { year: "2020", event: "500+ Happy Clients" },
-//     { year: "2024", event: "Industry Leader" }
-//   ];
+  const [counters, setCounters] = useState({
+    clients: 0,
+    placements: 0,
+    properties: 0
+  });
 
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
           setIsVisible(true);
+          // Start counters when section becomes visible
+          startCounters();
         }
       },
       { threshold: 0.3 }
@@ -50,142 +27,139 @@ const About = () => {
       observer.observe(sectionRef.current);
     }
 
-    return () => observer.disconnect();
+    return () => {
+      if (sectionRef.current) {
+        observer.unobserve(sectionRef.current);
+      }
+    };
   }, []);
+
+  const startCounters = () => {
+    const targetValues = { clients: 500, placements: 1000, properties: 50 };
+    const duration = 2000; // 2 seconds
+    const steps = 60;
+    const stepValues = {
+      clients: targetValues.clients / steps,
+      placements: targetValues.placements / steps,
+      properties: targetValues.properties / steps
+    };
+
+    let currentStep = 0;
+    const timer = setInterval(() => {
+      currentStep++;
+      setCounters({
+        clients: Math.min(Math.floor(stepValues.clients * currentStep), targetValues.clients),
+        placements: Math.min(Math.floor(stepValues.placements * currentStep), targetValues.placements),
+        properties: Math.min(Math.floor(stepValues.properties * currentStep), targetValues.properties)
+      });
+
+      if (currentStep >= steps) {
+        clearInterval(timer);
+      }
+    }, duration / steps);
+  };
 
   return (
     <section id="about" className="about" ref={sectionRef}>
       <div className="container">
-        {/* Section Header */}
-        <div className="section-header">
-          <div className="section-badge">
-            <span className="badge-icon">ℹ️</span>
-            <span className="badge-text">About Us</span>
-          </div>
-          <h2 className="section-title">
-            Your Trusted Partner in 
-            <span className="highlight"> Facility Management</span>
-          </h2>
-          <p className="section-subtitle">
-            Delivering excellence in comprehensive business solutions since 2010
-          </p>
-        </div>
-
         <div className="about-content">
-          {/* Main Content */}
-          <div className="about-main">
-            <div className="content-grid">
-              {/* Text Content */}
-              <div className="text-content">
-                <div className="description-section">
-                  <h3 className="content-title">
-                    Transforming Businesses with Reliable Solutions
-                  </h3>
-                  <div className="description-text">
-                    <p>
-                      <strong>Vinayak Facility & Management Services</strong> has been 
-                      at the forefront of providing comprehensive business solutions 
-                      for over a decade. We understand that every business has unique 
-                      requirements, and we tailor our services to meet those specific needs.
-                    </p>
-                    <p>
-                      Our commitment to <strong>quality, reliability, and innovation</strong> 
-                      has made us the preferred choice for 500+ clients across India. 
-                      From manpower supply to real estate management, we deliver 
-                      end-to-end solutions that drive business growth.
-                    </p>
-                  </div>
-                </div>
-
-                {/* Key Features */}
-                <div className="features-section">
-                  <h4 className="features-title">Why Choose Us?</h4>
-                  <div className="features-grid">
-                    {features.map((feature, index) => (
-                      <div 
-                        key={index} 
-                        className={`feature-card ${isVisible ? 'animate' : ''}`}
-                        style={{ animationDelay: `${index * 0.1}s` }}
-                      >
-                        <div className="feature-icon">{feature.icon}</div>
-                        <h5 className="feature-title">{feature.title}</h5>
-                        <p className="feature-description">{feature.description}</p>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              </div>
-
-              {/* Visual Content */}
-              <div className="visual-content">
-                <div className="image-container">
-                  <div className="main-image">
-                    <div className="image-placeholder">
-                      <span className="placeholder-icon">🏢</span>
-                      <span className="placeholder-text">Professional Excellence</span>
-                    </div>
-                  </div>
-                  
-                  {/* Achievement Badges */}
-                  <div className="achievement-badges">
-                    <div className="badge-item experience">
-                      <span className="badge-number">10+</span>
-                      <span className="badge-label">Years Experience</span>
-                    </div>
-                    <div className="badge-item clients">
-                      <span className="badge-number">500+</span>
-                      <span className="badge-label">Happy Clients</span>
-                    </div>
-                    <div className="badge-item projects">
-                      <span className="badge-number">1000+</span>
-                      <span className="badge-label">Projects Done</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
+          <div className={`about-text ${isVisible ? 'visible' : ''}`}>
+            <h2 className="section-title">About Us</h2>
+            <div className="about-description">
+              <p>
+                <strong>Vinayak Facility & Management Services</strong> is a premier service provider 
+                with expertise in multiple domains. We pride ourselves on delivering exceptional quality 
+                and reliability across all our service verticals.
+              </p>
+              <p>
+                With years of industry experience, our team of professionals is dedicated to 
+                understanding your unique requirements and providing customized solutions that 
+                exceed expectations. We believe in building long-term relationships with our 
+                clients based on trust, transparency, and outstanding service delivery.
+              </p>
+              <p>
+                Our commitment to excellence, combined with our innovative approach and 
+                customer-centric philosophy, makes us the preferred choice for businesses 
+                seeking comprehensive facility and management solutions.
+              </p>
             </div>
-
-            {/* Mission & Vision */}
-            <div className="mission-vision">
-              <div className="mission-card">
-                <div className="card-icon">🎯</div>
-                <h4 className="card-title">Our Mission</h4>
-                <p className="card-description">
-                  To deliver exceptional facility management services that empower 
-                  businesses to focus on their core operations while we handle their 
-                  infrastructure needs with professionalism and efficiency.
-                </p>
-              </div>
-              
-              <div className="vision-card">
-                <div className="card-icon">🔭</div>
-                <h4 className="card-title">Our Vision</h4>
-                <p className="card-description">
-                  To become the most trusted and innovative facility management partner 
-                  in India, setting new standards in quality, reliability, and customer 
-                  satisfaction.
-                </p>
-              </div>
-            </div>
-
             
-            {/* CTA Section */}
-            <div className="about-cta">
-              <div className="cta-content">
-                <h3 className="cta-title">Ready to Transform Your Business?</h3>
-                <p className="cta-description">
-                  Let's discuss how our comprehensive facility management solutions 
-                  can help your business grow and succeed.
-                </p>
-                <div className="cta-buttons">
-                  <button className="cta-btn primary">
-                    <span className="btn-icon">📞</span>
-                    <span className="btn-text">Get Free Consultation</span>
-                  </button>
-                  <button className="cta-btn secondary">
-                    <span className="btn-icon">📧</span>
-                    <span className="btn-text">Contact Us</span>
-                  </button>
+            <div className="stats-grid">
+              <div className="stat-item">
+                <div className="stat-number">{counters.clients}+</div>
+                <div className="stat-label">Happy Clients</div>
+                <div className="stat-bar">
+                  <div className="stat-progress" style={{width: '100%'}}></div>
+                </div>
+              </div>
+              <div className="stat-item">
+                <div className="stat-number">{counters.placements}+</div>
+                <div className="stat-label">Successful Placements</div>
+                <div className="stat-bar">
+                  <div className="stat-progress" style={{width: '100%'}}></div>
+                </div>
+              </div>
+              <div className="stat-item">
+                <div className="stat-number">{counters.properties}+</div>
+                <div className="stat-label">Properties Managed</div>
+                <div className="stat-bar">
+                  <div className="stat-progress" style={{width: '100%'}}></div>
+                </div>
+              </div>
+            </div>
+            
+            <div className="about-features">
+              <div className="feature">
+                <div className="feature-icon">🎯</div>
+                <div className="feature-content">
+                  <h4>Mission</h4>
+                  <p>To deliver exceptional services that empower businesses and enhance operational efficiency.</p>
+                </div>
+              </div>
+              <div className="feature">
+                <div className="feature-icon">👁️</div>
+                <div className="feature-content">
+                  <h4>Vision</h4>
+                  <p>To be the most trusted partner for comprehensive business solutions nationwide.</p>
+                </div>
+              </div>
+              <div className="feature">
+                <div className="feature-icon">💎</div>
+                <div className="feature-content">
+                  <h4>Values</h4>
+                  <p>Integrity, Excellence, Innovation, and Customer-Centric approach in everything we do.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div className={`about-visual ${isVisible ? 'visible' : ''}`}>
+            <div className="visual-container">
+              <div className="floating-element element-1">
+                <div className="element-icon">👥</div>
+                <span>Manpower</span>
+              </div>
+              <div className="floating-element element-2">
+                <div className="element-icon">🏢</div>
+                <span>Real Estate</span>
+              </div>
+              <div className="floating-element element-3">
+                <div className="element-icon">💼</div>
+                <span>Placement</span>
+              </div>
+              <div className="floating-element element-4">
+                <div className="element-icon">🔧</div>
+                <span>Maintenance</span>
+              </div>
+              <div className="main-circle">
+                <div className="circle-content">
+                  <div className="circle-icon">🏆</div>
+                  <span>Trusted Partner</span>
+                </div>
+                <div className="circle-rings">
+                  <div className="ring ring-1"></div>
+                  <div className="ring ring-2"></div>
+                  <div className="ring ring-3"></div>
                 </div>
               </div>
             </div>
