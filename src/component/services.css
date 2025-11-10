@@ -344,6 +344,7 @@
   background: var(--bg-primary);
   box-shadow: var(--shadow-sm);
   transform: translateX(5px);
+  color: pink;
 }
 
 .feature-check {
