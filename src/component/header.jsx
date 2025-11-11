@@ -28,7 +28,11 @@ const Header = () => {
         <div className="logo">
           <Link to="/">
             <div className="logo-main">
-              <span className="logo-icon">🏢</span>
+              <span className="logo-icon"> <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M12 2L3 7L12 12L21 7L12 2Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M3 12L12 17L21 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M3 17L12 22L21 17" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg></span>
               <div className="logo-text">
                 <h2>VINAYAK FACILITY</h2>
                 <p>Management Services</p>

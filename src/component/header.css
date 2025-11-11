@@ -32,7 +32,8 @@
 /* Logo Styles */
 .logo a {
   text-decoration: none;
-  color: inherit;
+  /* color: inherit; */
+  color: skyblue;
 }
 
 .logo-main {
@@ -75,6 +76,7 @@
   font-weight: 500;
   letter-spacing: 0.5px;
   transition: all 0.3s ease;
+  
 }
 
 .header.scrolled .logo-text h2 {
@@ -86,6 +88,11 @@
 }
 
 /* Navigation Styles */
+.nav {
+  display: flex;
+  align-items: center;
+}
+
 .nav-list {
   display: flex;
   list-style: none;
@@ -167,7 +174,7 @@
   color: white !important;
 }
 
-/* Hamburger Menu */
+/* Hamburger Menu - FIXED */
 .hamburger {
   display: none;
   flex-direction: column;
@@ -175,22 +182,29 @@
   border: none;
   cursor: pointer;
   padding: 8px;
-  width: 30px;
-  height: 30px;
+  width: 40px;
+  height: 40px;
   justify-content: center;
   align-items: center;
   position: relative;
   z-index: 1001;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+
+.hamburger:hover {
+  background: rgba(102, 126, 234, 0.1);
 }
 
 .hamburger span {
   width: 25px;
   height: 3px;
   background: linear-gradient(135deg, #667eea, #764ba2);
-  margin: 2px 0;
+  margin: 3px 0;
   transition: all 0.3s ease;
   border-radius: 3px;
   transform-origin: center;
+  display: block;
 }
 
 .hamburger-open span:nth-child(1) {
@@ -211,7 +225,7 @@
 /* Mobile Navigation */
 @media (max-width: 968px) {
   .hamburger {
-    display: flex;
+    display: flex !important;
   }
 
   .nav {
@@ -228,6 +242,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    z-index: 1000;
   }
 
   .nav.nav-open {
@@ -295,8 +310,8 @@
   }
 
   .hamburger {
-    width: 25px;
-    height: 25px;
+    width: 35px;
+    height: 35px;
   }
 
   .hamburger span {
