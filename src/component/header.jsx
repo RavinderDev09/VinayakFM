@@ -34,7 +34,8 @@ const Header = () => {
                   <path d="M3 17L12 22L21 17" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                 </svg></span>
               <div className="logo-text">
-                <h2>VINAYAK FACILITY</h2>
+                <h3 class='main-text-header' > VINAYAK FACILITY</h3>
+                {/* <h2 style={{ backgroundColor: 'blue', color: 'white' }} class='main-text-header'>VINAYAK FACILITY</h2> */}
                 <p>Management Services</p>
               </div>
             </div>

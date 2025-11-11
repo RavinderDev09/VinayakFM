@@ -398,7 +398,7 @@
 .btn-secondary {
   background: transparent;
   /* color: var(--primary-color); */
-  color: whitesmoke;
+  color: black;
   border: 2px solid var(--primary-color);
 }
 
