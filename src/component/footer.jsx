@@ -41,7 +41,7 @@ const Footer = () => {
             <div className="social-links">
               <button 
                 className="social-link" 
-                onClick={() => openSocialLink('https://linkedin.com/in/yourprofile')}
+                onClick={() => openSocialLink('https://www.linkedin.com/company/vinayak-facility-management-services')}
                 aria-label="LinkedIn"
               >
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
@@ -51,7 +51,7 @@ const Footer = () => {
               
               <button 
                 className="social-link" 
-                onClick={() => openSocialLink('https://github.com/yourusername')}
+                onClick={() => openSocialLink('https://github.com/RavinderDev09/VinayakFM')}
                 aria-label="GitHub"
               >
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
