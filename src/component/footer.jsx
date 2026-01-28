@@ -51,7 +51,7 @@ const Footer = () => {
               
               <button 
                 className="social-link" 
-                onClick={() => openSocialLink('https://github.com/RavinderDev09/VinayakFM')}
+                onClick={() => openSocialLink('https://github.com/RavinderDev09')}
                 aria-label="GitHub"
               >
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
